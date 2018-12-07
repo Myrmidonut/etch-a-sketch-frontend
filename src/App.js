@@ -1,25 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navbar from "./components/Navbar";
+import Drawingboard from "./components/Drawingboard";
+import Footer from "./components/Footer";
+import Gallery from "./components/Gallery";
 
 class App extends Component {
+  state = {
+    content: "drawingboard"
+  }
+
+  componentDidMount() {
+    document.getElementById("galleryButton").addEventListener("click", e => {
+      e.preventDefault();
+
+      if (this.state.content === "drawingboard") {
+        this.setState({
+          content: "gallery"
+        })
+      } else {
+        this.setState({
+          content: "drawingboard"
+        })
+      }
+    })
+  }
+
   render() {
+    let content = null;
+
+    if (this.state.content === "drawingboard") {
+      content = (
+        <Drawingboard />
+      )
+    } else {
+      content = (
+        <Gallery />
+      )
+    }
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Navbar />
+        {content} 
+        <Footer />
       </div>
     );
   }

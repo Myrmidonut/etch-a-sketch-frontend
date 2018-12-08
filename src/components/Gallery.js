@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Gallery = () => {
   return (
     <div id="gallery">
-      My drawings
-      
-      Recent drawings
-      Popular drawings
-      All drawings
+      Here is the gallery.
     </div>
   )
 }

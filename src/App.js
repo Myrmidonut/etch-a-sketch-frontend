@@ -7,20 +7,20 @@ import Gallery from "./components/Gallery";
 
 class App extends Component {
   state = {
-    content: "drawingboard"
+    content: "Drawingboard"
   }
 
   componentDidMount() {
     document.getElementById("galleryButton").addEventListener("click", e => {
       e.preventDefault();
 
-      if (this.state.content === "drawingboard") {
+      if (this.state.content === "Drawingboard") {
         this.setState({
-          content: "gallery"
+          content: "Gallery"
         })
       } else {
         this.setState({
-          content: "drawingboard"
+          content: "Drawingboard"
         })
       }
     })
@@ -29,7 +29,7 @@ class App extends Component {
   render() {
     let content = null;
 
-    if (this.state.content === "drawingboard") {
+    if (this.state.content === "Drawingboard") {
       content = (
         <Drawingboard />
       )
@@ -41,7 +41,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navbar />
+        <Navbar home={this.state.content}/>
         {content} 
         <Footer />
       </div>
